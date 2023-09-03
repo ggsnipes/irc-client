@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="Irc.NET">
+</Property><Property Name="Solution File" Value="E:\software\self major project not sure what its really going to be\VB_NET_Soc1217818232002\Irc.NET\Irc.NET.sln">
+</Property><Property Name="User Options File" Value="E:\software\self major project not sure what its really going to be\VB_NET_Soc1217818232002\Irc.NET\Irc.NET.suo">
+</Property><Property Name="Date" Value="Thursday, 29 August 2013">
+</Property><Property Name="Time" Value="14:36 PM">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="Irc.NET.sln" Description="File successfully backed up as E:\software\self major project not sure what its really going to be\VB_NET_Soc1217818232002\Irc.NET\Backup\Irc.NET.sln">
+</Event><Event ErrorLevel="0" Project="" Source="Irc.NET.suo" Description="File successfully backed up as E:\software\self major project not sure what its really going to be\VB_NET_Soc1217818232002\Irc.NET\Backup\Irc.NET.suo">
+</Event><Event ErrorLevel="0" Project="Irc.NET" Source="Irc.NET.vbproj" Description="Project file successfully backed up as E:\software\self major project not sure what its really going to be\VB_NET_Soc1217818232002\Irc.NET\Backup\Irc.NET.vbproj">
+</Event><Event ErrorLevel="0" Project="Irc.NET" Source="Irc.NET.vbproj.user" Description="Project user file successfully backed up as E:\software\self major project not sure what its really going to be\VB_NET_Soc1217818232002\Irc.NET\Backup\Irc.NET.vbproj.user">
+</Event><Event ErrorLevel="0" Project="Irc.NET" Source="AssemblyInfo.vb" Description="File successfully backed up as E:\software\self major project not sure what its really going to be\VB_NET_Soc1217818232002\Irc.NET\Backup\AssemblyInfo.vb">
+</Event><Event ErrorLevel="0" Project="Irc.NET" Source="Form1.vb" Description="File successfully backed up as E:\software\self major project not sure what its really going to be\VB_NET_Soc1217818232002\Irc.NET\Backup\Form1.vb">
+</Event><Event ErrorLevel="0" Project="Irc.NET" Source="SocketsClient.vb" Description="File successfully backed up as E:\software\self major project not sure what its really going to be\VB_NET_Soc1217818232002\Irc.NET\Backup\SocketsClient.vb">
+</Event><Event ErrorLevel="0" Project="Irc.NET" Source="Form1.resx" Description="File successfully backed up as E:\software\self major project not sure what its really going to be\VB_NET_Soc1217818232002\Irc.NET\Backup\Form1.resx">
+</Event><Event ErrorLevel="1" Project="Irc.NET" Source="Irc.NET.vbproj" Description="Your project is targeting .NET Framework 2.0 or 3.0. If your project uses assemblies requiring a newer .NET Framework, your project will fail to build. You can change the .NET Framework version by clicking Properties on the project menu and then selecting a new version in the '.NET Framework' dropdown box. (In Visual Basic, this is located on the Compile tab by clicking the 'Advanced Compiler Options...' button.)">
+</Event><Event ErrorLevel="0" Project="Irc.NET" Source="Irc.NET.vbproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Irc.NET" Source="Irc.NET.vbproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="Irc.NET.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="Irc.NET.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Irc.NET" Source="Irc.NET.vbproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

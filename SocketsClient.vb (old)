@@ -1,0 +1,142 @@
+'SocketClient.vb 1.0 - By: Larry Gadea (Trivex) larry.gadea@rogers.com
+'
+'This source code is provided to you in an AS IS basis. You may not modify it without prior
+'permission from its creator.
+
+Imports System
+Imports System.Net
+Imports System.Net.Sockets
+Imports System.Text
+
+Public Class StateObject
+    Public workSocket As Socket = Nothing ' Client socket.
+    Public BufferSize As Integer = 32767  ' Size of receive buffer.
+    Public buffer(32767) As Byte          ' Receive buffer.
+    Public sb As New StringBuilder()      ' Received data string.
+End Class
+
+Public Class SocketsClient
+    Public Event onConnect()                                                        'When client gets connected to server.
+    Public Event onError(ByVal Description As String)                               'When an error occurs in the socket.
+    Public Event onDataArrival(ByVal Data As Byte(), ByVal TotalBytes As Integer)   'When data is received from the server
+    Public Event onDisconnect()                                                     'When the client gets disconnected from the server.
+    Public Event onSendComplete(ByVal DataSize As Integer)                          'When sending data to the server is complete.
+
+    Private Shared response As [String] = [String].Empty                            'Data received.
+    Private Shared port As Integer = 44                                             'Port to connected onto.
+    Private Shared ipHostInfo As IPHostEntry = Dns.Resolve("localhost")             'IP address of server.
+    Private Shared ipAddress As ipAddress = ipHostInfo.AddressList(0)               'Pick the main IP address of the server.
+    Private Shared client As New Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp)    'Client object
+
+    Public Sub Connect(ByVal RemoteHostName As String, ByVal RemotePort As Integer)
+        Try
+            'Set information for connection.
+            port = RemotePort
+            ipHostInfo = Dns.Resolve(RemoteHostName)
+            ipAddress = ipHostInfo.AddressList(0)
+            Dim remoteEP As New IPEndPoint(ipAddress, port)
+
+            'Connect and trigger sub 'sockConnected' when connected.
+            client.BeginConnect(remoteEP, AddressOf sockConnected, client)
+            Exit Try
+        Catch
+            'Notify host if an error occurs.
+            RaiseEvent onError(Err.Description)
+            Exit Sub
+        End Try
+    End Sub
+
+    Public Sub SendData(ByVal Data() As Byte)
+        Try
+            Dim byteData As Byte() = Data
+
+            'Send the data and trigger the sub 'sockSendEnd' when completed sending.
+            client.BeginSend(byteData, 0, byteData.Length, 0, AddressOf sockSendEnd, client)
+            Exit Try
+        Catch
+            'Notify host if an error occurs.
+            RaiseEvent onError(Err.Description)
+            Exit Sub
+        End Try
+    End Sub
+
+    Public Sub Disconnect()
+        Try
+            'Kill the socket.
+            client.Shutdown(SocketShutdown.Both)    'Kill any data being sent or received.
+            client.Close()                          'Kill socket connection.
+            Exit Try
+        Catch
+            'Notify host if an error occurs.
+            RaiseEvent onError(Err.Description)
+            Exit Sub
+        End Try
+    End Sub
+
+    Public Function StringToBytes(ByVal Data As String) As Byte()
+        'Do a conversion from string into a byte array using the .NET System.Text
+        StringToBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(Data)
+    End Function
+
+    Public Function BytestoString(ByVal Data As Byte()) As String
+        'Do a conversion from a byte array to a string using the .NET System.Text
+        BytestoString = System.Text.ASCIIEncoding.ASCII.GetString(Data)
+    End Function
+
+    Private Sub sockConnected(ByVal ar As IAsyncResult)
+        'Check to see if the socket is connected. If not, close with an error to the host.
+        If client.Connected = False Then RaiseEvent onError("Connection refused.") : Exit Sub
+        Try
+            Dim state As New StateObject()
+            state.workSocket = client
+
+            'Begin to receive data from server.
+            client.BeginReceive(state.buffer, 0, state.BufferSize, 0, AddressOf sockDataArrival, state)
+            Exit Try
+        Catch
+            'Notify host if an error occurs.
+            RaiseEvent onError(Err.Description)
+            Exit Sub
+        End Try
+        RaiseEvent onConnect()
+    End Sub
+
+    Private Sub sockDataArrival(ByVal ar As IAsyncResult)
+        'Get the data from the server.
+        Dim state As StateObject = CType(ar.AsyncState, StateObject)
+        Dim client As Socket = state.workSocket
+        Dim bytesRead As Integer = client.EndReceive(ar)
+        Dim Data() As Byte = state.buffer
+
+        Try
+            'The .NET framework will send useless 0kb packets at high speed in order to show a connection loss.
+            'Therefore, if the packet size is 0kb, the connection will be closed.
+            'This method of detecting a disconnection isnt very effective, but may be the only solution for now.
+            If bytesRead = 0 Then
+                client.Shutdown(SocketShutdown.Both)    'Kill any data being sent or received.
+                client.Close()                          'Kill socket connection.
+                RaiseEvent onDisconnect()               'Let the host know that the server has disconnected client.
+                Exit Sub
+            End If
+            ReDim state.buffer(32767)                   'Max size of packet. (Yes, I know about the 256 limit)
+
+            'Once again the .NET framework has screwed up. This time, you need to tell it to listen again after
+            'receiving something. I dont know why Microsoft left this to be optional. It is important to make
+            'the socket continue listening after receiving any kind of data.
+            client.BeginReceive(state.buffer, 0, state.BufferSize, 0, AddressOf sockDataArrival, state)
+            Exit Try
+        Catch
+            'Notify host if an error occurs.
+            RaiseEvent onError(Err.Description)
+            Exit Sub
+        End Try
+        RaiseEvent onDataArrival(Data, bytesRead)
+    End Sub
+
+    Private Sub sockSendEnd(ByVal ar As IAsyncResult)
+        Dim client As Socket = CType(ar.AsyncState, Socket)
+        Dim bytesSent As Integer = client.EndSend(ar)
+        'Notify the host that the data has completed to be sent.
+        RaiseEvent onSendComplete(bytesSent)
+    End Sub
+End Class

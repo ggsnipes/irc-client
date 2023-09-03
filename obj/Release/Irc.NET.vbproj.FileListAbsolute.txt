@@ -1,0 +1,20 @@
+E:\software\self major project not sure what its really going to be\VB_NET_Soc1217818232002\Irc.NET\bin\Irc.NET.exe
+E:\software\self major project not sure what its really going to be\VB_NET_Soc1217818232002\Irc.NET\bin\Irc.NET.xml
+E:\software\self major project not sure what its really going to be\VB_NET_Soc1217818232002\Irc.NET\obj\Release\ResolveAssemblyReference.cache
+E:\software\self major project not sure what its really going to be\VB_NET_Soc1217818232002\Irc.NET\obj\Release\Irc.NET.Form1.resources
+E:\software\self major project not sure what its really going to be\VB_NET_Soc1217818232002\Irc.NET\obj\Release\ResGen.read.1.tlog
+E:\software\self major project not sure what its really going to be\VB_NET_Soc1217818232002\Irc.NET\obj\Release\ResGen.write.1.tlog
+E:\software\self major project not sure what its really going to be\VB_NET_Soc1217818232002\Irc.NET\obj\Release\Irc.NET.exe
+E:\software\self major project not sure what its really going to be\VB_NET_Soc1217818232002\Irc.NET\obj\Release\Irc.NET.xml
+V:\software\self major project not sure what its really going to be\VB_NET_Soc1217818232002\Irc.NET\obj\Release\Irc.NET.exe
+V:\software\self major project not sure what its really going to be\VB_NET_Soc1217818232002\Irc.NET\obj\Release\Irc.NET.xml
+V:\software\self major project not sure what its really going to be\VB_NET_Soc1217818232002\Irc.NET\bin\Irc.NET.exe
+V:\software\self major project not sure what its really going to be\VB_NET_Soc1217818232002\Irc.NET\bin\Irc.NET.xml
+V:\software\self major project not sure what its really going to be\VB_NET_Soc1217818232002\Irc.NET\obj\Release\Irc.NET.Form1.resources
+V:\software\self major project not sure what its really going to be\VB_NET_Soc1217818232002\Irc.NET\obj\Release\Irc.NET.vbproj.GenerateResource.Cache
+D:\irc client\obj\Release\Irc.NET.exe
+D:\irc client\obj\Release\Irc.NET.xml
+D:\irc client\bin\Irc.NET.exe
+D:\irc client\bin\Irc.NET.xml
+D:\irc client\obj\Release\Irc.NET.Form1.resources
+D:\irc client\obj\Release\Irc.NET.vbproj.GenerateResource.Cache
