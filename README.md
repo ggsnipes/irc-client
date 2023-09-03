@@ -14,6 +14,8 @@ Good question, I barely remember how it works, but luckily 2013 me decided to no
 - PRIVMSG - sends a message to a channel you are in, or to a specific person 
 - NICK - change your nickname
 
+Also all commands do not require any prefix or symbols before it, just type it out as is and it should work
+
 ## Why are you uploading this
 
 So I can stop saying I made an IRC client in vb.net and actually link this repository to show that I did make one.
